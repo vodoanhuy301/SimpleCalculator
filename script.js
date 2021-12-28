@@ -1,5 +1,5 @@
-const myScreen = document.querySelector(".calculator-screen");
-const myKeys = document.getElementsByClassName("key-number");
+const myScreen = $(".calculator-screen");
+const myKeys = $(".key-number");
 var isAdd = false;
 var theFirst = 0;
 var isMinus = false;
@@ -8,28 +8,30 @@ var isDivide = false;
 for (var i = 0; i < myKeys.length; i++) {
   myKeys[i].addEventListener("click", addNumbers);
 }
+// console.log(myKeys);
+// myKeys.click(addNumbers);
 function addNumbers() {
-  myScreen.innerHTML += this.innerHTML;
+  myScreen.html(myScreen.html()+ this.innerHTML);
 }
 function add() {
-  theFirst = parseInt(myScreen.innerHTML);
+  theFirst = parseInt(myScreen.html());
   isAdd = true;
-  myScreen.innerHTML = "";
+  myScreen.html("");
 }
 function minus() {
-  theFirst = parseInt(myScreen.innerHTML);
+  theFirst = parseInt(myScreen.html());
   isMinus = true;
-  myScreen.innerHTML = "";
+  myScreen.html("");
 }
 function times() {
-  theFirst = parseInt(myScreen.innerHTML);
+  theFirst = parseInt(  myScreen.html());
   isTimes = true;
-  myScreen.innerHTML = "";
+  myScreen.html("");
 }
 function divide() {
-  theFirst = parseInt(myScreen.innerHTML);
+  theFirst = parseInt(  myScreen.html());
   isDivide = true;
-  myScreen.innerHTML = "";
+  myScreen.html("");
 }
 function resetStatus() {
   isAdd = false;
@@ -39,25 +41,24 @@ function resetStatus() {
   isDivide = false;
 }
 function result() {
-
   console.log(isAdd);
   if (isAdd) {
-    myScreen.innerHTML = theFirst + parseInt(myScreen.innerHTML);
+    myScreen.html(theFirst + parseInt(myScreen.html()));
     isAdd = false;
   } else if (isMinus) {
-    myScreen.innerHTML = theFirst - parseInt(myScreen.innerHTML);
+    myScreen.html(theFirst - parseInt(myScreen.html()));
     isMinus = false;
   } else if (isTimes) {
-    myScreen.innerHTML = theFirst * parseInt(myScreen.innerHTML);
+    myScreen.html(theFirst * parseInt(myScreen.html()));
     isTimes = false;
   } else if (isDivide) {
-    myScreen.innerHTML = theFirst / parseInt(myScreen.innerHTML);
+    myScreen.html(theFirst / parseInt(myScreen.html()));
     isDivide = false;
   };
 }
 function clearMyScreen() {
   resetStatus();
   console.log("cleared");
-  myScreen.innerHTML = "";
+  myScreen.html("");
   theFirst = 0;
 }
